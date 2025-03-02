@@ -13,5 +13,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+Route::get('/students', function () {
+    return Inertia::render('students');
+})->name('students');
+
+Route::get('/professors', function () {
+    return Inertia::render('professors');
+})->name('professors');
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
