@@ -10,9 +10,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 // Sample professor data
 const professors = [
-    { id: 'P001', name: 'Mr. Cedric D. Cruz', absences: 2, department: 'Information Technology', subject: 'Programming Languages' },
-    { id: 'P002', name: 'Prof. Brian Lee', absences: 1, department: 'Information Technology', subject: 'Database Management' },
-    { id: 'P003', name: 'Dr. Catherine Wilson', absences: 4, department: 'Engineering', subject: 'Thermodynamics' },
+    { id: 'P001', name: 'Mr. Cedric Cruz', absences: 1, department: 'Information Technology (IT)', subject: 'Programming Languages' },
+    { id: 'P002', name: 'Ms. Angel Miranda', absences: 2, department: 'Computer Science (CS)', subject: 'Cybersecurity Fundamentals' },
+    { id: 'P003', name: 'Mr. Michael Quiambao', absences: 69, department: 'Computer Engineeringg (CpE)', subject: 'Cybersecurity Fundamentals' },
 ];
 
 // Extract unique departments for the dropdown
@@ -33,38 +33,39 @@ export default function Professors() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Professors" />
             <div className="flex flex-col gap-4 p-4"> 
+                 {/* Search Filter & Dropdown */}
+                 <div className="flex gap-4">
+                        {/* Dropdown Menu */}
+                        <select
+                            className="border p-2 rounded-md"
+                            onChange={(e) => setSelectedDepartment(e.target.value)}
+                            value={selectedDepartment}
+                        >
+                            <option value="">All Departments</option>
+                            {departments.map(dept => (
+                                <option key={dept} value={dept}>{dept}</option>
+                            ))}
+                        </select>
 
-                {/* Search Filter & Dropdown */}
-                <div className="flex gap-4">
-                    {/* Dropdown Menu */}
-                    <select
-                        className="border p-2 rounded-md"
-                        onChange={(e) => setSelectedDepartment(e.target.value)}
-                        value={selectedDepartment}
-                    >
-                        <option value="">All Departments</option>
-                        {departments.map(dept => (
-                            <option key={dept} value={dept}>{dept}</option>
-                        ))}
-                    </select>
-
-                    <input
-                        type="text"
-                        placeholder="Search by name, department, or subject..."
-                        className="border p-2 rounded-md flex-1"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
+                        {/* Search */}
+                        <input
+                            type="text"
+                            placeholder="Search by name, department, or subject..."
+                            className="border p-2 rounded-md flex-1"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>  
                 
-                <h2 className="text-xl font-semibold">Total Professors: {professors.length}</h2>
+                {/* Total Professors Count */}
+                {/* <h2 className="text-xl font-semibold">Total Professors: {professors.length}</h2> */}
                 
                 <div className="border rounded-xl p-4 shadow-md">
                     <h2 className="text-lg font-semibold mb-4">Professors List</h2>
                     {filteredProfessors.length > 0 ? (
                         <table className="w-full border-collapse">
                             <thead>
-                                <tr className="border-b">
+                                <tr className="border-b bg-gray-100">
                                     <th className="text-left p-2">Name</th>
                                     <th className="text-left p-2">Absences</th>
                                     <th className="text-left p-2">Department</th>

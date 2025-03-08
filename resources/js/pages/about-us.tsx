@@ -44,7 +44,7 @@ export default function AboutUs() {
                 </section>
                 {/* Section: Our Mission */}
                 <section className="text-center max-w-4xl">
-                    <h2 className="text-2xl font-semibold">Our Vision</h2>
+                    <h2 className="text-2xl font-semibold">Our Mission</h2>
                     <p className="mt-4 text-lg text-gray-600 text-center">
                         AGILA DESCRIPTION.
                     </p>
