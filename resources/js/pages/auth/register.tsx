@@ -11,7 +11,10 @@ import AuthLayout from '@/layouts/auth-layout';
 import { Checkbox } from '@/components/ui/checkbox';
 
 type RegisterForm = {
-    name: string;
+    first_name: string;
+    last_name: string;
+    id_no: string;
+    school_email: string;
     email: string;
     password: string;
     password_confirmation: string;
@@ -19,7 +22,10 @@ type RegisterForm = {
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm<RegisterForm>({
-        name: '',
+        first_name: '',
+        last_name: '',
+        id_no: '',
+        school_email: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -47,8 +53,27 @@ export default function Register() {
             <Head title="Register" />
             <form className="flex flex-col gap-6" onSubmit={submit}>
                 <div className="grid gap-6">
+                    {/* pag naglalagay si user ng info, nagkakasabay-sabay -- NEED TO BE FIXED --  */}
+                    {/* FIXED FIXED FIXEX PROBLEM */}
                     <div className="grid gap-2">
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="first_name">First Name</Label>
+                        <Input
+                            id="first_name"
+                            type="text"
+                            required
+                            autoFocus
+                            tabIndex={1}
+                            autoComplete="name"
+                            value={data.first_name}
+                            onChange={(e) => setData('first_name', e.target.value)}
+                            disabled={processing}
+                            placeholder="First Name"
+                        />
+                        <InputError message={errors.first_name} className="mt-2" />
+                    </div>
+
+                    <div className="grid gap-2">
+                        <Label htmlFor="name">Last Name</Label>
                         <Input
                             id="name"
                             type="text"
@@ -56,13 +81,50 @@ export default function Register() {
                             autoFocus
                             tabIndex={1}
                             autoComplete="name"
-                            value={data.name}
-                            onChange={(e) => setData('name', e.target.value)}
+                            value={data.last_name}
+                            onChange={(e) => setData('last_name', e.target.value)}
                             disabled={processing}
-                            placeholder="Full name"
+                            placeholder="Last Name"
                         />
-                        <InputError message={errors.name} className="mt-2" />
+                        <InputError message={errors.last_name} className="mt-2" />
                     </div>
+
+
+                    <div className="grid gap-2">
+                        <Label htmlFor="/">Identification No.</Label>
+                        <Input
+                            id="name"
+                            type="text"
+                            required
+                            autoFocus
+                            tabIndex={1}
+                            autoComplete="name"
+                            value={data.id_no}
+                            onChange={(e) => setData('id_no', e.target.value)}
+                            disabled={processing}
+                            placeholder="Identification No."
+                        />
+                        <InputError message={errors.id_no} className="mt-2" />
+                    </div>
+
+
+                    <div className="grid gap-2">
+                        <Label htmlFor="name">School Email</Label>
+                        <Input
+                            id="name"
+                            type="text"
+                            required
+                            autoFocus
+                            tabIndex={1}
+                            autoComplete="name"
+                            value={data.school_email}
+                            onChange={(e) => setData('school_email', e.target.value)}
+                            disabled={processing}
+                            placeholder="School Email"
+                        />
+                        <InputError message={errors.school_email} className="mt-2" />
+                    </div>
+
 
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email address</Label>

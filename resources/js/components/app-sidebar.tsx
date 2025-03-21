@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Database, Folder, LayoutGrid, Plus, User, UserCircle, UserRound, Users } from 'lucide-react';
+import { Database, LayoutGrid, Mail, UserRound, Users, UsersRound, CalendarCheck } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -21,7 +21,12 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Professors',
         url: '/professors',
-        icon: UserRound,
+        icon: UsersRound,
+    },
+    {
+        title: 'Schedules',
+        url: '/schedules',
+        icon: CalendarCheck,
     },
     {
         title: 'Data Report',
@@ -32,19 +37,14 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        url: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        url: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
-    },
-    {
         title: 'About Us',
         url: '/about-us',
         icon: Users,
+    },
+    {
+        title: 'Contact Us',
+        url: '/contact-us',
+        icon: Mail,
     },
 ];
 
